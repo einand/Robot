@@ -23,6 +23,8 @@ class Robot
     private $pos = array();
     private $path = array();
 
+    private $msg = "";
+
     private $world;
 
     function __construct($_posX, $_posY, $_direction, $_world)
@@ -139,11 +141,13 @@ class Robot
         $border = $this->world->getBorder();
 
         if ($this->world->isFlat() && ($_posX < $border['x1'] || $_posX > $border['x2'] || $_posY < $border['y1'] || $_posY > $border['y2'])) {
+            $this->setMsg('Hitting border');
             return false;
         }
 
         if($this->world->hasObstacle($_posX, $_posY)) {
             /* kan implementera "typ" av hinder, för att tex om det är en sten, och man har en hacka kan man ta sig igenom ändå */
+            $this->setMsg('Hitting Obstacle');
             return false;
         }
 
@@ -164,5 +168,12 @@ class Robot
         $this->path[] = $this->getPos();
 
         return true;
+    }
+
+    function setMsg($_msg) {
+         $this->msg = $_msg;
+    }
+    function getMsg() {
+        return $this->msg;
     }
 }
