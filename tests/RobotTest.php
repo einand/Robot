@@ -6,7 +6,7 @@ include_once '../Robot.php';
 include_once '../World.php';
 
 /**
- * @covers Email
+ * @covers Robot
  */
 final class RobotTest extends TestCase
 {
