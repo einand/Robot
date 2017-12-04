@@ -10,18 +10,14 @@ include_once "Robot.php";
 include_once "World.php";
 
 $world = new World(100,100, true);
-$robot = new Robot(0,0, Robot::SOUTH, $world);
+$robot = new Robot(50,50, Robot::NORTH, $world);
 
 
-$commands = [
-    'f',
-    'f',
-    'l',
-    'f',
-    'f',
-];
+$commands = ['f','f','l','f','f','r','b','b'];
 
-$robot->command($commands);
+if (!$robot->command($commands)) {
+    echo $robot->getMsg() . PHP_EOL;
+}
 
 foreach ($robot->getPath() as $index => $pos) {
     echo '--------'. $index .'-------'. PHP_EOL;
