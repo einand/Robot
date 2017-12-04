@@ -35,6 +35,7 @@ class Robot
 
     function command($_commands)
     {
+        $success = false;
         foreach ($_commands as $command) {
             switch ($command) {
                 case 'f':
@@ -56,10 +57,11 @@ class Robot
             }
 
             if ($success == false) {
-                return;
+                return $success;
             }
 
         }
+        return $success;
 
     }
 
@@ -68,6 +70,7 @@ class Robot
         $this->pos['x'] = $_posX;
         $this->pos['y'] = $_posY;
         $this->pos['direction'] = $_direction;
+        $this->pos['msg'] = $this->getMsg();
     }
 
     function getPos()
