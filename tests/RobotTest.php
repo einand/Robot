@@ -38,6 +38,8 @@ final class RobotTest extends TestCase
     }
 
 
+    /* - The robot is on a 100×100 grid at location (50, 50) and facing NORTH. The robot is given the commands “fflffrbb” but there is an obstacle at (48, 50) and should end up at (48, 49)
+ */
     public function testObstacle(): void
     {
         $world = new World(100,100, true);
