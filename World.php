@@ -8,6 +8,8 @@
 
 class World
 {
+    private $obstacle = array();
+
 
     private $borders = array();
     private $flat = false;
@@ -32,15 +34,32 @@ class World
         return $this->flat;
     }
 
+
+    function generateObstacles() {
+        $this->addObstacle('STONE', 48, 50);
+    }
+
+    function addObstacle($_kind, $_posX, $_posY)  {
+        $this->obstacle[$_posX][$_posY] = $_kind;
+    }
+
+    function getObstacle($_posX, $_posY)  {
+        if (isset($this->obstacle[$_posX][$_posY])) {
+            return $this->obstacle[$_posX][$_posY];
+        } else {
+            return false;
+        }
+    }
+
     public function hasObstacle($_posX, $_posY) {
 
-        /* Kan byggas om att läsa in hinder dynamiskt */
-
-        if ($_posX == 48 && $_posY == 50) {
+        if ($this->getObstacle($_posX, $_posY)) {
             return true;
+
         }
 
         return false;
+
     }
 
 }
