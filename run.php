@@ -10,6 +10,9 @@ include_once "Robot.php";
 include_once "World.php";
 
 $world = new World(100,100, true);
+$world->generateObstacles();
+
+
 $robot = new Robot(50,50, Robot::NORTH, $world);
 
 
@@ -24,4 +27,5 @@ foreach ($robot->getPath() as $index => $pos) {
     echo 'X: '. $pos['x'] . PHP_EOL;
     echo 'Y: '. $pos['y'] . PHP_EOL;
     echo 'D: '. $pos['direction'] . PHP_EOL;
+    echo 'MSG: '. $pos['msg'] . PHP_EOL;
 }

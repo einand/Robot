@@ -43,6 +43,9 @@ final class RobotTest extends TestCase
     public function testObstacle(): void
     {
         $world = new World(100,100, true);
+        $world->generateObstacles();
+
+
         $robot = new Robot(50,50, Robot::NORTH, $world);
 
         $robot->command(['f','f','l','f','f','r','b','b']);
